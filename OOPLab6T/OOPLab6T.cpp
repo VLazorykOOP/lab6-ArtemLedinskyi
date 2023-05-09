@@ -174,14 +174,126 @@ void Ex3(){
     SqinsideCircle SIC1(2);
     cin>>SIC1;
     cout<<SIC1;
-    return 0;
+}
+#include<iostream>
+using namespace std;
+class Base{
+    protected:
+    int dat;
+    public:
+    Base():dat(1){}
+    Base(int d):dat(d){}
+};
+class R1:protected Base{
+    protected:
+    int d1;
+    public:
+    R1():d1(1){}
+    R1(int d):d1(d){}
+    R1(int a , int b):Base(a),d1(b){}
+};
+class R2:protected Base{
+    protected:
+    int d2;
+    public:
+    R2():d2(1){}
+    R2(int d):d2(d){}
+    R2(int a , int b):Base(a),d2(b){}
+};
+class R3:protected R1{
+    protected:
+    int d3;
+    public:
+    R3():d3(1){}
+    R3(int d):d3(d){}
+    R3(int a, int b, int d):R1(a,b),d3(d){}
+};
+class R4:protected R3{
+    protected:
+    int d4;
+    public:
+    R4():d4(1){}
+    R4(int d):d4(d){}
+    R4(int a,int b ,int c, int v,int g,int u):R3(c,v,g),d4(u){}
+};
+class R5:protected R2,protected R3{
+    protected:
+    int d5;
+    public:
+    R5():d5(1){}
+    R5(int d):d5(d){}
+    R5(int a,int b , int c ,int v ,int g, int u,int m):R2(b,c),R3(v,g,u),d5(m){}
+};
+class R1V:virtual protected Base{
+    int d1;
+    public:
+    R1V():d1(1){}
+    R1V(int d):d1(d){}
+    R1V(int a , int b):Base(a),d1(b){}
+};
+class R2V:virtual protected Base{
+    protected:
+    int d2;
+    public:
+    R2V():d2(1){}
+    R2V(int d):d2(d){}
+    R2V(int a , int b):Base(a),d2(b){}
+};
+class R3V:virtual protected R1V{
+    protected:
+    int d3;
+    public:
+    R3V():d3(1){}
+    R3V(int d):d3(d){}
+    R3V(int a, int b, int d):R1V(a,b),d3(d){}
+};
+class R4V:virtual protected R1V, protected R3V{
+    protected:
+    int d4;
+    public:
+    R4V():d4(1){}
+    R4V(int d):d4(d){}
+    R4V(int a,int b ,int c, int v,int g,int u):R1V(a,b),R3V(c,v,g),d4(u){}
+};
+class R5V:virtual protected Base,protected R2V,protected R3V{
+    protected:
+    int d5;
+    public:
+    R5V():d5(1){}
+    R5V(int d):d5(d){}
+    R5V(int a,int b , int c ,int v ,int g, int u,int m):Base(a),R2V(b,c),R3V(v,g,u),d5(m){}
+};
+void Ex1(){
+    Base b;
+    R1 r1;
+    R2 r2;
+    R3 r3;
+    R4 r4;
+    R5 r5;
+    R1V r1v;
+    R2V r2v;
+    R3V r3v;
+    R4V r4v;
+    R5V r5v;
+
+    cout<<"Size of Base: "<<sizeof(b)<<endl;
+    cout<<"Size of R1: "<<sizeof(r1)<<endl;
+    cout<<"Size of R2: "<<sizeof(r2)<<endl;
+    cout<<"Size of R3: "<<sizeof(r3)<<endl;
+    cout<<"Size of R4: "<<sizeof(r4)<<endl;
+    cout<<"Size of R5: "<<sizeof(r5)<<endl;
+    cout<<"Size of R1V: "<<sizeof(r1v)<<endl;
+    cout<<"Size of R2V: "<<sizeof(r2v)<<endl;
+    cout<<"Size of R3V: "<<sizeof(r3v)<<endl;
+    cout<<"Size of R4V: "<<sizeof(r4v)<<endl;
+    cout<<"Size of R5V: "<<sizeof(r5v)<<endl;
 }
 int main(){
     int a;
     cout<<"Exercise :"<<endl;
     cin>>a;
     if(a==1){
-
+        Ex1();
     }
     if(a==2){
         Ex2();

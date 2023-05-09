@@ -1,5 +1,4 @@
 #include<iostream>
-#include<map>
 using namespace std;
 
 class Employee{
@@ -175,8 +174,7 @@ void Ex3(){
     cin>>SIC1;
     cout<<SIC1;
 }
-#include<iostream>
-using namespace std;
+
 class Base{
     protected:
     int dat;
